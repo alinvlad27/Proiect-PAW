@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp1.Clase
 {
-    public class Doctor
+    [Serializable]
+    public class Doctor : IComparable
     {
         private int id;
         private string name;
@@ -49,6 +50,12 @@ namespace WindowsFormsApp1.Clase
             return "Id -ul " + this.id + " si numele" + this.name + " si varsta" + this.age;
         }
         //--------------------------------------------------------------------------------------
+
+        public int CompareTo(object other)
+        {
+            Doctor doctor=(Doctor)other;
+            return string.Compare(this.name,doctor.name);
+        }
 
     }
 
